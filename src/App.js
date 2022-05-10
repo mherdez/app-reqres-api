@@ -3,8 +3,9 @@ import './App.css';
 
 function App() {
   const URL_REQRES = 'https://reqres.in/api/users?page=2';
-  const URL_RANDOM_USERS = 'https://randomuser.me/api/'; // UN USUARIO
-  // const URL_RANDOM_USERS = 'https://randomuser.me/api/?results=10'; // VARIOS USUARIOS
+  // const URL_RANDOM_USERS = 'https://randomuser.me/api/'; // UN USUARIO
+  const URL_RANDOM_USERS =
+    'https://randomuser.me/api/?results=10'; // VARIOS USUARIOS
 
   const [usuarios, setUsuarios] = useState([]);
 
@@ -74,7 +75,9 @@ function App() {
                 src={picture.medium}
                 alt={`${name.first} ${name.last}`}
               />
-              {name.first} {name.last}
+              <div className='nombre'>
+                {name.first} {name.last}
+              </div>
             </li>
           ))}
         </ul>
