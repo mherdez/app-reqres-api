@@ -4,8 +4,7 @@ import './App.css';
 function App() {
   const URL_REQRES = 'https://reqres.in/api/users?page=2';
   // const URL_RANDOM_USERS = 'https://randomuser.me/api/'; // UN USUARIO
-  const URL_RANDOM_USERS =
-    'https://randomuser.me/api/?results=10'; // VARIOS USUARIOS
+  // const URL_RANDOM_USERS = 'https://randomuser.me/api/?results=10'; // VARIOS USUARIOS
 
   const [usuarios, setUsuarios] = useState([]);
 
@@ -40,14 +39,14 @@ function App() {
 
   const cargarUsuariosAsynAwait = async () => {
     // REQRES
-    // const respuesta = await fetch(URL_REQRES);
-    // const { data } = await respuesta.json();
-    // setUsuarios(data);
+    const respuesta = await fetch(URL_REQRES);
+    const { data } = await respuesta.json();
+    setUsuarios(data);
 
     // RANDOM USERS
-    const respuesta = await fetch(URL_RANDOM_USERS);
-    const { results } = await respuesta.json();
-    setUsuarios(results);
+    // const respuesta = await fetch(URL_RANDOM_USERS);
+    // const { results } = await respuesta.json();
+    // setUsuarios(results);
   };
 
   useEffect(() => {
@@ -60,16 +59,18 @@ function App() {
         <h3>Api Rest Profile</h3>
         <ul>
           {/* REQRES */}
-          {/* {usuarios.map(
+          {usuarios.map(
             ({ id, first_name, last_name, avatar }) => (
               <li key={id}>
                 <img src={avatar} alt={first_name} />
-                {first_name} {last_name}
+                <div className='nombre'>
+                  {first_name} {last_name}
+                </div>
               </li>
             )
-          )} */}
+          )}
           {/* RANDOM USERS */}
-          {usuarios.map(({ login, name, picture }) => (
+          {/* {usuarios.map(({ login, name, picture }) => (
             <li key={login.uuid}>
               <img
                 src={picture.medium}
@@ -79,7 +80,7 @@ function App() {
                 {name.first} {name.last}
               </div>
             </li>
-          ))}
+          ))} */}
         </ul>
       </header>
     </div>
