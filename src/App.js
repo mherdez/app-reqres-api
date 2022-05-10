@@ -3,8 +3,8 @@ import './App.css';
 
 function App() {
   const URL_REQRES = 'https://reqres.in/api/users?page=2';
-  const URL_RANDOM_USERS =
-    'https://randomuser.me/api/?results=10';
+  const URL_RANDOM_USERS = 'https://randomuser.me/api/'; // UN USUARIO
+  // const URL_RANDOM_USERS = 'https://randomuser.me/api/?results=10'; // VARIOS USUARIOS
 
   const [usuarios, setUsuarios] = useState([]);
 
@@ -38,6 +38,12 @@ function App() {
   };
 
   const cargarUsuariosAsynAwait = async () => {
+    // REQRES
+    // const respuesta = await fetch(URL_REQRES);
+    // const { data } = await respuesta.json();
+    // setUsuarios(data);
+
+    // RANDOM USERS
     const respuesta = await fetch(URL_RANDOM_USERS);
     const { results } = await respuesta.json();
     setUsuarios(results);
@@ -52,6 +58,7 @@ function App() {
       <header className='App-header'>
         <h3>Api Rest Profile</h3>
         <ul>
+          {/* REQRES */}
           {/* {usuarios.map(
             ({ id, first_name, last_name, avatar }) => (
               <li key={id}>
@@ -60,6 +67,7 @@ function App() {
               </li>
             )
           )} */}
+          {/* RANDOM USERS */}
           {usuarios.map(({ login, name, picture }) => (
             <li key={login.uuid}>
               <img
